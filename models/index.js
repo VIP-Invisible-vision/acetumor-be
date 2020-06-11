@@ -11,10 +11,7 @@ const mongodb = require('mongodb')
 
 const conf = config.db
 
-let url = 'mongodb://'
-url += conf.username + ':' + conf.password
-url += '@' + conf.host + ':' + String(conf.port)
-url += '/?authSource=' + conf.authSource
+let url = conf.string
 
 const client = new mongodb.MongoClient(url, { useUnifiedTopology: true })
 

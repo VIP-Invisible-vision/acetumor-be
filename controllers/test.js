@@ -5,7 +5,7 @@
 
 'use strict'
 
-expors.Post = async function(req, res) {
+exports.Post = async function(req, res) {
 	const image = req.body.img 
 	const cat   = req.body.cat 
 	if (!cat || !image) {
@@ -14,4 +14,5 @@ expors.Post = async function(req, res) {
 	}
 	// send request to test api 
 	// return res 
+	res.send('success')
 }

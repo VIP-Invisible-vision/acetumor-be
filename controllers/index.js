@@ -50,7 +50,7 @@ api.get('/info/:time', modules.info.Get)
 api.post('/info', modules.info.Post)
 
 // test
-api.post('/test', modules.test.Get)
+api.post('/test', modules.test.Post)
 
 // record
 api.get('/record', modules.record.GetAll)

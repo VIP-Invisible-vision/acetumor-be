@@ -5,8 +5,8 @@
 
 'use strict'
 
-const user = require('../service/user')
-const userInfo = require('../service/userInfo')
+const user = require('../services/user')
+const userInfo = require('../services/userInfo')
 
 // user login
 exports.Post = async function(req, res) {
