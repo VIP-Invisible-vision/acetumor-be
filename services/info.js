@@ -10,7 +10,7 @@ const time = require('../utils/time')
 
 exports.Get = async function(duration) {
 	const postTime = time.Timestamp() - duration; 
-	return await article.GetMany({ timestamp: { $ge: postTime} })
+	return await article.GetMany({ timestamp: { $gt: postTime} })
 }
 
 

@@ -20,7 +20,7 @@ exports.Delete = async function(rid) {
 }
 
 exports.Upsert = async function(rid, feedback) {
-  return await record.Upsert({ rid: rid }, { feedback: feedback })
+  return await record.Upsert({ _id: rid }, { $set: {feedback: feedback }})
 }
 
 exports.Insert = async function(uid, feedback, img, des, cat) {

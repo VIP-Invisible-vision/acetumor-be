@@ -53,8 +53,9 @@ api.post('/info', modules.info.Post)
 api.post('/test', modules.test.Post)
 
 // record
-api.get('/record', modules.record.GetAll)
+
 api.get('/record/:id', modules.record.GetOne)
+api.get('/record', modules.record.GetAll)
 api.post('/record', modules.record.Post)
 api.put('/record', modules.record.Put) // need auth(staff only)
 api.delete('/record/:id', modules.record.Delete) 

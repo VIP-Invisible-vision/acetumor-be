@@ -11,6 +11,7 @@ const reply = require('../services/reply')
 exports.Get = async function(req, res) {
 	const pid = req.params.pid
 	if (!pid) {
+		console.log(req.params)
 		res.status(400).send('Params error, pid required')
 		return
 	}
@@ -34,7 +35,7 @@ exports.Post = async function(req, res) {
 	}
 	const result = await post.Insert(thread, title, owner, visibility, content, image)
 	if (!result) res.status(403).send('Insertion failed.')
-	else res.send(result)
+	else res.status(200).send('ok')
 }
 
 

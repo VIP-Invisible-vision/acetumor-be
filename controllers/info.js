@@ -15,7 +15,7 @@ exports.Get = async function(req, res) {
 	}
 	const articles = await info.Get(time)
 	if (!articles) res.status(404).send('No articles found.')
-	else res.send(articles)
+	else res.status(200).send(articles)
 }
 
 
@@ -28,5 +28,5 @@ exports.Post = async function(req, res) {
 	}
 	const result = await info.Insert(title, content)
 	if (!result) res.status(403).send('Add article failed.')
-	else res.send(result)
+	else res.status(200).send('ok')
 }

@@ -17,7 +17,7 @@ exports.Post = async function(req, res) {
 	}
 	const result = await reply.Post(pid, rid, uid)
 	if (!result) res.status(403).send('Add reply failed.')
-	else res.send(result)
+	else res.status(200).send('ok')
 } 
 
 
@@ -29,6 +29,6 @@ exports.Delete = async function(req, res) {
 	}
 	const result = await reply.Delete(rid)
 	if (!result) res.status(403).send('Delete reply failed.')
-	else res.send(result)
+	else res.status(200).send('ok')
 } 
 

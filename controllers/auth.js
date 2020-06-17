@@ -13,6 +13,7 @@ exports.UserAuth = async function (req, res, next) {
     res.status(403).send('Forbidden')
     return
   }
+  console.log('user auth')
   req.user = uid
   next()
 }
