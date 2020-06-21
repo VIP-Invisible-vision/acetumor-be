@@ -19,7 +19,11 @@ exports.Insert =  async function(doc){
 
 }
 exports.Get = async function(filter, opt = {}) {
-	return await collection.find(filter, opt).toArray();
+	return await collection.find(filter, opt).toArray()
+}
+
+exports.Threads = async function(filter) {
+	return await collection.distinct(filter)
 }
 
 exports.Delete = async function(filter) {

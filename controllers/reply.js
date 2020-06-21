@@ -8,7 +8,7 @@
 const reply = require('../services/reply')
 
 exports.Post = async function(req, res) {
-	const pid = req.params.pid
+	const pid = req.body.pid
 	const rid = req.body.rid
 	const uid = req.body.uid
 	if (!pid || !rid || !uid) {
@@ -22,9 +22,9 @@ exports.Post = async function(req, res) {
 
 
 exports.Delete = async function(req, res) {
-	const rid = req.params.rid
+	const rid = req.body.rid
 	if (!rid) {
-		res.status(400).send('Params error, pid required.')
+		res.status(400).send('Params error, rid required.')
 		return
 	}
 	const result = await reply.Delete(rid)

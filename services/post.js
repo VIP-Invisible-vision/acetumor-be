@@ -12,7 +12,7 @@ exports.GetAll = async function(thread, visibility) {
 }
 
 exports.GetThreads = async function() {
-	return await post.Get({}, { "distinctthread": 1 })
+	return await post.Threads('thread')
 }
 
 exports.Delete = async function(thread) {

@@ -40,8 +40,8 @@ exports.Post = async function(req, res) {
 
 
 exports.Delete = async function(req, res) {
-	const pid = req.params.pid
-	const uid = req.uid
+	const pid = req.body.pid
+	const uid = req.body.user
 	if (!pid || !uid) {
 		res.status(400).send('Params error, pid, uid required')
 		return
@@ -54,5 +54,5 @@ exports.Delete = async function(req, res) {
 	}
 	const delReply = await reply.DeleteMany(pid)
 	if (!delReply) res.status(403).send('Delete the post failed.')
-	else res.send(delReply)
+	else res.status(200).send('ok')
 }

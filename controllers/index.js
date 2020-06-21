@@ -35,15 +35,15 @@ api.post('/user/info', modules.user.PostInfo)
 
 // forum
 api.get('/forum/t', modules.thread.GetAll)
-api.get('/forum/t/:tid', modules.thread.Get)
-api.delete('/forum/t/:tid', modules.thread.Delete) // need auth(staff only)
+api.get('/forum/t/all', modules.thread.Get)
+api.delete('/forum/t', modules.thread.Delete) // need auth(staff only)
 
 api.get('/forum/p/:pid', modules.post.Get) // get post's replies
 api.post('/forum/p', modules.post.Post)
-api.delete('/forum/p/:pid', modules.post.Delete) // need auth
+api.delete('/forum/p', modules.post.Delete) // need auth
 
-api.post('/forum/r/:pid', modules.reply.Post) 
-api.delete('/forum/r/:rid', modules.reply.Delete) // need auth
+api.post('/forum/r', modules.reply.Post) 
+api.delete('/forum/r', modules.reply.Delete) // need auth
 
 // info
 api.get('/info/:time', modules.info.Get)
@@ -58,4 +58,4 @@ api.get('/record/:id', modules.record.GetOne)
 api.get('/record', modules.record.GetAll)
 api.post('/record', modules.record.Post)
 api.put('/record', modules.record.Put) // need auth(staff only)
-api.delete('/record/:id', modules.record.Delete) 
+api.delete('/record', modules.record.Delete) 
