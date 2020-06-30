@@ -11,8 +11,9 @@ const userInfo = require('../services/userInfo')
 // user login
 exports.Post = async function(req, res) {
   const code = req.body.code
-  if (!code) {
-    res.status(400).send('Params error, code required')
+  const platform = req.body.platform
+  if (!code || !platform) {
+    res.status(400).send('Params error, code, platform required')
     return
   }
   const re = await user.Login(code)
@@ -20,7 +21,7 @@ exports.Post = async function(req, res) {
     res.status(403).send('Login Failed.')
     return
   }
-  res.send(re)
+  res.status(200).send(re)
 }
 
 

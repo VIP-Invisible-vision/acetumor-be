@@ -8,6 +8,7 @@
 'use strict'
 
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const moduleList = ['info', 'user', 'record', 'post', 'thread', 'test', 'reply']
 let modules = {}
@@ -22,7 +23,7 @@ app.use(express.json())
 app.disable('x-powered-by') // hide express identity
 let api = express.Router() // router
 app.use('/api', api) // register with middleware
-
+app.use(bodyParser.json({limit: '50mb'}))
 app.listen(3000, () => {
   console.log('# API server started!')
 })
