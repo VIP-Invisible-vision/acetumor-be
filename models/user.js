@@ -37,5 +37,6 @@ exports.Delete = async function (filter) {
 // upsert a user
 exports.Upsert = async function (filter, update) {
   const res = await collection.updateOne(filter, update, { upsert: true })
-  return res.result.ok
+  if (!res.result.ok) return false
+  else return res
 }

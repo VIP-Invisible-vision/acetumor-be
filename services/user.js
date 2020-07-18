@@ -6,6 +6,7 @@
 'use strict'
 
 const user = require('../models/user')
+const userInfo = require('../models/userInfo')
 const token = require('../utils/token')
 const config = require('../config')
 const axios = require('axios')
@@ -48,10 +49,13 @@ exports.Login = async function (code, platform) {
   // Sign Token
   const t = token.Sign(u._id)
   const res = await user.Upsert(u, { $set: { auth: t }})
+  if (res.upsertedCount > 0) {
+    const doc = { role: 'doctor', email: profile.email, specilist: 'lung', phone: '' }
+    userInfo.Upsert(u, { $set: doc })
+  }
   if (!res) return false
   return {
     token: t,
     info: profile,
-    url: 'http://localhost:8080/profile'
   }
 }

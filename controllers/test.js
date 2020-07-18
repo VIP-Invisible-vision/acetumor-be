@@ -1,20 +1,20 @@
 /*
 * [controllers] test
-* handles for test 
+* send test message
+* controllers for test
 */
 
-'use strict'
+const axios = require('axios')
 
 exports.Post = async function(req, res) {
-	console.log('test')
-	const image = req.body.img 
-	const cat   = req.body.cat 
-	if (!cat || !image) {
-		res.status(400).send('Params Error, img, cat required')
-		return
+	const cat = req.body.cat
+	const img = req.body.img
+
+	if (!cat || !img) {
+		res.status(403).send('Params error, require cat and img')
 	}
-	console.log(cat)
-	// send request to test api 
-	// return res 
+	// resend to another backend
+
+	console.log(img)
 	res.status(200).send('ok')
 }

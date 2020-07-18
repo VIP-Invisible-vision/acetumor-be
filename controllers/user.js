@@ -28,7 +28,7 @@ exports.Post = async function(req, res) {
 exports.GetInfo = async function(req, res) {
   const id = req.query.user 
   const info = await userInfo.Get(id)
-  console.log(req.query)
+  console.log(info)
   if (!info) 
     res.status(404).send('User not found.')
   else return res.send(info)
@@ -40,7 +40,6 @@ exports.PostInfo = async function(req, res) {
   const id = req.query.user
   const email = req.body.email
   const phone = req.body.phone 
-  console.log(req.body)
   if (!id || !email || !phone) {
     res.status(400).send('Params error, id, email, phone required')
     return
@@ -49,5 +48,5 @@ exports.PostInfo = async function(req, res) {
   if (!re) {
     res.status(403).send('Update user information failed.')
   }
-  else return res.send(re)
+  else return res.send('ok')
 }

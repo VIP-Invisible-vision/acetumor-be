@@ -20,7 +20,7 @@ module.exports = {
     user_url: 'https://api.github.com/user',
 
     // 生产环境
-    redirect_uri: 'http://localhost:8080/home/',
+    redirect_uri: 'http://localhost:8080/forum/',
     client_id: '368c3543fd57241028ca',
     client_secret: 'a5fbe2fb9e69bf21b24cf533edef8c65da3ac3cd',
   }

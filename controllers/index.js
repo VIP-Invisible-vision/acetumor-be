@@ -8,7 +8,6 @@
 'use strict'
 
 const express = require('express')
-const bodyParser = require('body-parser')
 
 const moduleList = ['info', 'user', 'record', 'post', 'thread', 'test', 'reply']
 let modules = {}
@@ -19,11 +18,10 @@ for (let m of moduleList) {
 }
 
 const app = express()
-app.use(express.json())
+app.use(express.json({ limit: '20mb'}))
 app.disable('x-powered-by') // hide express identity
 let api = express.Router() // router
-app.use('/api', api) // register with middleware
-app.use(bodyParser.json({limit: '50mb'}))
+app.use('/api', api) 
 app.listen(3000, () => {
   console.log('# API server started!')
 })
@@ -52,7 +50,6 @@ api.post('/info', modules.info.Post)
 
 // test
 api.post('/test', modules.test.Post)
-
 // record
 
 api.get('/record/:id', modules.record.GetOne)
