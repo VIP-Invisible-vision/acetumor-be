@@ -25,7 +25,7 @@ exports.Insert = async function (doc) {
 
 // get a user
 exports.Find = async function (filter, opt = {}) {
-  return await collection.findOne(filter, opt).toArray()
+  return await collection.findOne(filter, opt)
 }
 
 // delete a user

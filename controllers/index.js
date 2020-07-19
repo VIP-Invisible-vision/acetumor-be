@@ -28,7 +28,12 @@ app.listen(3000, () => {
 
 // APIs
 // user
+// admin login
 api.post('/user', modules.user.Post)
+// user login
+api.post('/user/u', modules.user.LoginU)
+// user register
+api.post('/user/r', modules.user.RegisterU)
 api.get('/user/info', modules.user.GetInfo)
 api.post('/user/info', modules.user.PostInfo)
 

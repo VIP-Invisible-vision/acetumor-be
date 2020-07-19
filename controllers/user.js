@@ -8,7 +8,7 @@
 const user = require('../services/user')
 const userInfo = require('../services/userInfo')
 
-// user login
+// admin login
 exports.Post = async function(req, res) {
   const code = req.body.code
   const platform = req.body.platform
@@ -24,6 +24,38 @@ exports.Post = async function(req, res) {
   res.status(200).send(re)
 }
 
+// user login
+exports.LoginU = async function(req, res) {
+  const username = req.body.username
+  const password = req.body.password
+  if (!username || !password) {
+    res.status(400).send('Params error, username, password required')
+  }
+  const re = await user.LoginU(username, password)
+  if (!re) {
+    res.status(403).send('Incorrect username or password')
+    return
+  }
+  res.status(200).send('ok')
+}
+
+// user register
+exports.RegisterU = async function(req, res) {
+  const username = req.body.username
+  const password = req.body.password
+  if (!username || !password) {
+    res.status(400).send('Params error, username, password required')
+  }
+  const re = await user.RegisterU(username, password)
+  if (re == -1) {
+    res.status(403).send('Username has already been taken')
+    return
+  } else if (!re) {
+    res.status(500).send('Registeration failed please contact our staff.')
+    return
+  }
+  res.status(200).send('ok')
+}
 
 exports.GetInfo = async function(req, res) {
   const id = req.query.user 
