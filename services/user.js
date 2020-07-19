@@ -70,7 +70,7 @@ exports.LoginU = async function(username, password) {
 // user register
 exports.RegisterU = async function(username, password) {
   let res = await user.Find({ _id: username })
-  if (!res) return -1 
+  if (res) return -1 
   res = await user.Upsert({ _id: username }, { $set: { auth: password }})
   if (!res) return false
   const doc = { role: 'user', email: 'no email', specilist: 'no', phone: 'no phone number' }

@@ -8,8 +8,9 @@ const userInfo = require('../services/userInfo')
 const post = require('../services/post')
 
 exports.GetAll = async function(req, res) {
-	const thread = req.body.thread
-	const uid    = req.body.user
+	const thread = req.query.thread
+	const uid    = req.query.user
+	console.log(req.query)
 	if (!thread || !uid) {
 		res.status(400).send('Params error, thread, uid required')
 		return
@@ -17,12 +18,12 @@ exports.GetAll = async function(req, res) {
 	let visibility = []
 	const role  = await userInfo.GetRole(uid)
 	if (role.role === 'doctor' || role.role === 'admin') {
-		visibility = ['public', 'staff', uid]
-	} else if (role.role === 'patient') {
+		visibility = ['public', 'doctor', uid]
+	} else if (role.role === 'user') {
 		visibility = ['public', uid]
 	}
 	const posts = await post.GetAll(thread, visibility)
-	if (!posts) res.status(404).send('No post under the thread.')
+	if (!posts || posts.length == 0) res.status(404).send('No post under the thread.')
 	else res.status(200).send(posts)
 }
 

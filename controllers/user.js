@@ -28,6 +28,7 @@ exports.Post = async function(req, res) {
 exports.LoginU = async function(req, res) {
   const username = req.body.username
   const password = req.body.password
+  console.log(req.body)
   if (!username || !password) {
     res.status(400).send('Params error, username, password required')
   }
@@ -63,7 +64,7 @@ exports.GetInfo = async function(req, res) {
   console.log(info)
   if (!info) 
     res.status(404).send('User not found.')
-  else return res.send(info)
+  else res.status(200).send(info)
 }
 
 
@@ -80,5 +81,5 @@ exports.PostInfo = async function(req, res) {
   if (!re) {
     res.status(403).send('Update user information failed.')
   }
-  else return res.send('ok')
+  else res.status(200).send('ok')
 }
